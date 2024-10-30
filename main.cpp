@@ -5,6 +5,9 @@
 
 using namespace std;
 
+int score = 0;
+bool playing = true;
+
 vector<vector<int>> createBoard(int size) {
     vector<vector<int>> board;
     for (int i = 0; i < size; i++) {
@@ -61,22 +64,26 @@ void placeApple(vector<vector<int>> &board) {
 }
 
 void moveSnake(int oldPos[], int newPos[], vector<vector<int>> &board) {
+    if (board[newPos[0]][newPos[1]] == 3) {
+        score++;
+        placeApple(board);
+    }
     board[oldPos[0]][oldPos[1]] = 0;
     board[newPos[0]][newPos[1]] = 1;
 }
 
 void getMovement(int &direction) {
-    int* x = &direction;
-    int* y = &direction + 1;
+    int* y = &direction;
+    int* x = &direction + 1;
     char directionChar;
     cin >> directionChar;
-    if (directionChar == 'w') {
+    if (directionChar == 's') {
         *x = 0;
         *y = 1;
     } else if (directionChar == 'a') {
         *x = -1;
         *y = 0;
-    } else if (directionChar == 's') {
+    } else if (directionChar == 'w') {
         *x = 0;
         *y = -1;
     } else if (directionChar == 'd') {
@@ -99,17 +106,19 @@ int main()
 
     printBoard(board);
 
-    bool playing = true;
+
     cout << "Do you want to play the snake?" << endl;
 
     while (playing) {
+        cout << "Score: "<< score << endl;
+
+        getMovement(direction[0]);
         cout << "" << endl;
-        printBoard(board);
         int oldPos[] = {snakeHead[0],snakeHead[1]};
         snakeHead[0] = snakeHead[0] + direction[0];
         snakeHead[1] = snakeHead[1] + direction[1];
         moveSnake(oldPos, snakeHead, board);
-        getMovement(direction[0]);
+        printBoard(board);
     }
     return 0;
 }
