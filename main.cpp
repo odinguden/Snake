@@ -34,7 +34,7 @@ void printBoard(vector<vector<int>> board) {
                 x = " |";
             } else if (board[i][j] == 1) {
                 x = "s|";
-            } else {
+            } else if (board[i][j] == 2) {
                 x = "*|";
             }
             row = row + x;
@@ -60,11 +60,21 @@ void placeApple(vector<vector<int>> &board) {
             validPlace = true;
         }
     }
-    board[randX][randY] = 3;
+    board[randX][randY] = 2;
+}
+
+void endGame() {
+    playing = false;
+    cout << "Game ended, You lost" << endl;
+    cout << "Score: " + score << endl;
 }
 
 void moveSnake(int oldPos[], int newPos[], vector<vector<int>> &board) {
-    if (board[newPos[0]][newPos[1]] == 3) {
+    if (board[newPos[0]][newPos[1]] == 2) {
+        score++;
+        placeApple(board);
+    }
+    if (board[newPos[0]][newPos[1]] == 1) {
         score++;
         placeApple(board);
     }
@@ -89,6 +99,8 @@ void getMovement(int &direction) {
     } else if (directionChar == 'd') {
         *x = 1;
         *y = 0;
+    } else if (directionChar == 'c') {
+        endGame();
     }
 }
 
