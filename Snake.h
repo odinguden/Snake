@@ -13,7 +13,7 @@ using namespace std;
 class Snake {
 public:
     Snake(int startSize, Board &board_);
-    bool moveSnake(char dir);
+    int moveSnake(char dir);
     int snakeSize;
     Board *board;
     deque<vector<int>> body;

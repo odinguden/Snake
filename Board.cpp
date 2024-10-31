@@ -48,7 +48,6 @@ void Board :: printBoard() {
 }
 
 void Board :: printBoardWithScore(int score) {
-    system("CLS");
     cout << "Score: " << score << endl;
     printBoard();
 }

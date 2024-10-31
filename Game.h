@@ -4,18 +4,22 @@
 
 #ifndef GAME_H
 #define GAME_H
-
+#include "Board.h"
+#include "MovementHandler.h"
+#include "Snake.h"
 
 
 class Game {
     public:
-    Game() {
-        startGame();
-    };
+    Game();
     void startGame();
     void endGame();
+
+    Board *board;
+    Snake *snake;
     int score;
     bool playing;
+    char dir;
 
 };
 

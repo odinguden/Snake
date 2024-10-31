@@ -8,7 +8,10 @@
 
 
 class MovementHandler {
-
+public:
+    MovementHandler(char &dir_);
+    void getMovement();
+    char *dir;
 };
 
 

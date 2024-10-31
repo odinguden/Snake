@@ -41,36 +41,36 @@ vector<int> getNewPos(int oldX, int oldY, char dir) {
     }
     int newX = oldX + x;
     int newY = oldY + y;
-    return vector<int> ({oldX, oldY});
+    return vector<int> ({newX, newY});
 
 }
 
-bool Snake :: moveSnake(char dir) {
+int Snake :: moveSnake(char dir) {
+    cout<<"move snake "<<dir<<endl;
     int oldPos[] = {body.back()[0], body.back()[1]};
-    vector<int> newPosVector = getNewPos(oldPos[0], oldPos[1], dir);
-
-    int newPos[] = {newPosVector[0], newPosVector[1]};
-
+    cout<<"oldPos: "<<oldPos[0]<<" "<<oldPos[1]<<endl;
+    vector<int> newPos = getNewPos(oldPos[0], oldPos[1], dir);
+    cout<<"newPos: "<<newPos[0]<<" "<<newPos[1]<<endl;
     int nextTileValue = board->getVal(newPos[0], newPos[1]);
 
     if (nextTileValue  == 2) {
         //If apple
         snakeSize++;
-        //placeApple(board);
+        board->setVal(newPos[0], newPos[1], 1);
+        board->placeApple();
     }
     if (nextTileValue == 1) {
         //If snake
-        //score++;
         return false;
     }
     //If nothing
-
+    body.push_back({newPos[0], newPos[1]});
     board->setVal(newPos[0], newPos[1], 1);
     if(nextTileValue != 3) {
-        board->setVal(body.front()[0], body.front()[1], 1);
+        board->setVal(body.front()[0], body.front()[1], 0);
         body.pop_front();
     }
-    return true;
+    return nextTileValue;
 }
 
 //void getMovement(int &direction) {
