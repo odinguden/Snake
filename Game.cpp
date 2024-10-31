@@ -15,17 +15,14 @@
 
 using namespace std;
 
-int score = 0;
-bool playing = true;
+void Game :: startGame() {
 
-void startgame() {
+    playing = true;
+
     int direction[] = {1,0};
     int size = 9;
     Board board(size);
     Snake snake(0, board);
-
-    board.printBoard();
-
 
     cout << "Do you want to play the snake?" << endl;
 
@@ -36,7 +33,7 @@ void startgame() {
     }
 }
 
-void endGame() {
+void Game :: endGame() {
     playing = false;
     cout << "Game ended, You lost" << endl;
     cout << "Score: " + score << endl;

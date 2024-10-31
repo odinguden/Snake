@@ -12,14 +12,11 @@ using namespace std;
 
 class Snake {
 public:
-    Snake(int startSize, Board &board_) {
-        initSnake(startSize, board_);
-    };
-    void initSnake(int startSize, Board &board_);
+    Snake(int startSize, Board &board_);
     bool moveSnake(char dir);
     int snakeSize;
-    const Board *board;
-    deque<int[2]> body;
+    Board *board;
+    deque<vector<int>> body;
 };
 
 

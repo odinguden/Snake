@@ -12,14 +12,13 @@
 
 using namespace std;
 
-deque<int[2]> body;
-int snakeSize;
-Board *board;
-
-void initSnake(int startSize, Board &board_) {
+Snake :: Snake(int startSize, Board &board_) {
     snakeSize = startSize;
     board = &board_;
+
+    body = deque<vector<int>>();
     body.push_back({0, 0});
+    board->setVal(0,0,1);
 }
 
 vector<int> getNewPos(int oldX, int oldY, char dir) {
@@ -46,7 +45,7 @@ vector<int> getNewPos(int oldX, int oldY, char dir) {
 
 }
 
-bool moveSnake(char dir) {
+bool Snake :: moveSnake(char dir) {
     int oldPos[] = {body.back()[0], body.back()[1]};
     vector<int> newPosVector = getNewPos(oldPos[0], oldPos[1], dir);
 
@@ -74,24 +73,24 @@ bool moveSnake(char dir) {
     return true;
 }
 
-void getMovement(int &direction) {
-    int* y = &direction;
-    int* x = &direction + 1;
-    char directionChar;
-    cin >> directionChar;
-    if (directionChar == 's') {
-        *x = 0;
-        *y = 1;
-    } else if (directionChar == 'a') {
-        *x = -1;
-        *y = 0;
-    } else if (directionChar == 'w') {
-        *x = 0;
-        *y = -1;
-    } else if (directionChar == 'd') {
-        *x = 1;
-        *y = 0;
-    } else if (directionChar == 'c') {
-        //endGame();
-    }
-}
+//void getMovement(int &direction) {
+//    int* y = &direction;
+//    int* x = &direction + 1;
+//    char directionChar;
+//    cin >> directionChar;
+//    if (directionChar == 's') {
+//        *x = 0;
+//        *y = 1;
+//    } else if (directionChar == 'a') {
+//        *x = -1;
+//        *y = 0;
+//    } else if (directionChar == 'w') {
+//        *x = 0;
+//        *y = -1;
+//    } else if (directionChar == 'd') {
+//        *x = 1;
+//        *y = 0;
+//    } else if (directionChar == 'c') {
+//        //endGame();
+//    }
+//}

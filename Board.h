@@ -11,11 +11,7 @@ using namespace std;
 
 class Board {
 public:
-    Board(int size_) {
-        boardSize = size_;
-        board = initBoard();
-        placeApple();
-    };
+    Board(int size_);
     vector<vector<int>> initBoard();
     void placeApple();
     int getVal(int x, int y);

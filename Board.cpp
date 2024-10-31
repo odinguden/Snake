@@ -10,11 +10,8 @@
 
 using namespace std;
 
-vector<vector<int>> board;
-
-
-vector<vector<int>> initBoard(int size_) {
-    int boardSize = size_;
+Board::Board(int size_)  {
+    boardSize = size_;
     for (int i = 0; i < boardSize; i++) {
         vector<int> row;
         for (int j = 0; j < boardSize; j++) {
@@ -22,9 +19,11 @@ vector<vector<int>> initBoard(int size_) {
         }
         board.push_back(row);
     }
-}
+    placeApple();
+};
 
-void printBoard() {
+
+void Board :: printBoard() {
     string divider = "+";
     for (int i = 0; i < board.size(); i++) {
         divider = divider + "-+";
@@ -48,12 +47,13 @@ void printBoard() {
     }
 }
 
-void printBoardWithScore(int score) {
+void Board :: printBoardWithScore(int score) {
+    system("CLS");
     cout << "Score: " << score << endl;
     printBoard();
 }
 
-void placeApple(vector<vector<int>> &board) {
+void Board :: placeApple() {
     srand(time(0));
 
     bool validPlace = false;
@@ -72,14 +72,14 @@ void placeApple(vector<vector<int>> &board) {
     board[randX][randY] = 2;
 }
 
-int getVal(int x, int y) {
+int Board :: getVal(int x, int y) {
     if (x < board.size() && y < board.size()) {
         return board[y][x];
     } else {
         return 0;
     }
 }
-void setVal(int x, int y, int newVal) {
+void Board :: setVal(int x, int y, int newVal) {
     if (x < board.size() && y < board.size()) {
         board[y][x] = newVal;
     }
