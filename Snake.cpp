@@ -46,12 +46,13 @@ vector<int> getNewPos(int oldX, int oldY, char dir) {
 }
 
 int Snake :: moveSnake(char dir) {
-    cout<<"move snake "<<dir<<endl;
     int oldPos[] = {body.back()[0], body.back()[1]};
-    cout<<"oldPos: "<<oldPos[0]<<" "<<oldPos[1]<<endl;
     vector<int> newPos = getNewPos(oldPos[0], oldPos[1], dir);
-    cout<<"newPos: "<<newPos[0]<<" "<<newPos[1]<<endl;
     int nextTileValue = board->getVal(newPos[0], newPos[1]);
+
+    if (newPos[0] <0 || newPos[0] > 8 || newPos[1] < 0 || newPos[1] > 8) {
+        return 1;
+    }
 
     if (nextTileValue  == 2) {
         //If apple
@@ -71,25 +72,3 @@ int Snake :: moveSnake(char dir) {
     }
     return nextTileValue;
 }
-
-//void getMovement(int &direction) {
-//    int* y = &direction;
-//    int* x = &direction + 1;
-//    char directionChar;
-//    cin >> directionChar;
-//    if (directionChar == 's') {
-//        *x = 0;
-//        *y = 1;
-//    } else if (directionChar == 'a') {
-//        *x = -1;
-//        *y = 0;
-//    } else if (directionChar == 'w') {
-//        *x = 0;
-//        *y = -1;
-//    } else if (directionChar == 'd') {
-//        *x = 1;
-//        *y = 0;
-//    } else if (directionChar == 'c') {
-//        //endGame();
-//    }
-//}

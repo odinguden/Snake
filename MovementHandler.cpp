@@ -12,11 +12,12 @@ using namespace std;
 
 MovementHandler::MovementHandler(char &dir_) {
     dir = &dir_;
+    gettingMovement = true;
 }
 
 
 void MovementHandler :: getMovement() {
-    while (true) {
+    while (gettingMovement) {
         char newDir;
         std::cin >> newDir;
         *dir = newDir;

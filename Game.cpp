@@ -32,24 +32,29 @@ void Game :: startGame() {
     cout << "Do you want to play the snake?" << endl;
     MovementHandler movement_handler(dir);
     thread threadObj(&MovementHandler::getMovement, &movement_handler);
-
+    int cyle = 0;
     while (playing) {
-        system("CLS");
-        int moveState = snake->moveSnake(dir);
-        board->printBoardWithScore(score);
-        _sleep(500);
-        if (moveState == 1) {
-            endGame();
-        } else if (moveState == 2) {
-            score++;
+        int sleepTime = 10;
+        this_thread::sleep_for(chrono::milliseconds(sleepTime));
+        if (cyle == 25) {
+            cyle = 0;
+            int moveState = snake->moveSnake(dir);
+            if (moveState == 1) {
+                endGame();
+                threadObj.join();
+                movement_handler.gettingMovement = false;
+            } else if (moveState == 2) {
+                score++;
+            }
         }
-
-
+        system("CLS");
+        board->printBoardWithScore(score);
+        cyle++;
     }
 }
 
 void Game :: endGame() {
     playing = false;
     cout << "Game ended, You lost" << endl;
-    cout << "Score: " + score << endl;
+    cout << "Score: " << score << endl;
 }
