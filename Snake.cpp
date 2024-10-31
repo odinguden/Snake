@@ -60,13 +60,12 @@ int Snake :: moveSnake(char dir) {
         board->placeApple();
     }
     if (nextTileValue == 1) {
-        //If snake
-        return false;
+
     }
     //If nothing
     body.push_back({newPos[0], newPos[1]});
     board->setVal(newPos[0], newPos[1], 1);
-    if(nextTileValue != 3) {
+    if(nextTileValue != 2) {
         board->setVal(body.front()[0], body.front()[1], 0);
         body.pop_front();
     }
