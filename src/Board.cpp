@@ -6,7 +6,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#include "Board.h"
+#include "../include/Board.h"
 
 using namespace std;
 

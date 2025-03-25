@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 
-#include "Game.h"
+#include "../include/Game.h"
 
 using namespace std;
 

@@ -2,8 +2,8 @@
 // Created by odin2 on 31.10.2024.
 //
 
-#include "Snake.h"
-#include "Board.h"
+#include "../include/Snake.h"
+#include "../include/Board.h"
 #include <iostream>
 #include <vector>
 #include <cstdlib>

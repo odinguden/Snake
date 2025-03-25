@@ -3,13 +3,14 @@ project(Snake)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(Snake main.cpp
-        Game.cpp
-        Game.h
-        Board.cpp
-        Board.h
-        Snake.cpp
-        Snake.h
-        MovementHandler.cpp
-        MovementHandler.h
+add_executable(Snake
+        src/main.cpp
+        src/Game.cpp
+        include/Game.h
+        src/Board.cpp
+        include/Board.h
+        src/Snake.cpp
+        include/Snake.h
+        src/MovementHandler.cpp
+        include/MovementHandler.h
 )

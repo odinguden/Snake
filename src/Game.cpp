@@ -7,12 +7,12 @@
 #include <ctime>
 
 
-#include "Game.h"
+#include "../include/Game.h"
 
 #include <thread>
 
-#include "Board.h"
-#include "Snake.h"
+#include "../include/Board.h"
+#include "../include/Snake.h"
 
 
 using namespace std;
@@ -47,7 +47,7 @@ void Game :: startGame() {
                 score++;
             }
         }
-        system("CLS");
+        system("clear");
         board->printBoardWithScore(score);
         cyle++;
     }
