@@ -13,4 +13,6 @@ add_executable(Snake
         include/Snake.h
         src/MovementHandler.cpp
         include/MovementHandler.h
+        src/gui/MainStage.cpp
+        include/gui/MainStage.h
 )
