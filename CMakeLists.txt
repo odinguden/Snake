@@ -19,6 +19,12 @@ add_executable(
         src/game/Board.h
         src/controller/GameController.cpp
         src/controller/GameController.h
+        src/gui/BoardTile.cpp
+        src/gui/BoardTile.h
+        src/no-gui/NoGui.cpp
+        src/no-gui/NoGui.h
+        src/game/Snake.cpp
+        src/game/Snake.h
 
 )
 

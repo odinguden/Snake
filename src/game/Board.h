@@ -5,17 +5,21 @@
 #ifndef BOARD_H
 #define BOARD_H
 #include <vector>
-
+#include <string>
+#include "Snake.h"
 
 class Board {
 public:
     Board();
-
+    std::string toString();
+    void moveSnake(char dir);
 private:
+    Snake snake;
     static int size;
-    int tiles[12][12];
     void initBoard();
     void genApple();
+    int applePos[2];
+    bool snakeTile(int x, int y);
 };
 
 
